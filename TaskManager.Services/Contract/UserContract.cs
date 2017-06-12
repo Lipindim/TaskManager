@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManager.Domain.Entities;
+using TaskManager.Helper;
 
 namespace TaskManager.Services.Contract
 {
     public class UserContract : IUserContract
     {
         private Repository<User> userRepository;
+
         public Repository<User> UserRepository
         {
             get

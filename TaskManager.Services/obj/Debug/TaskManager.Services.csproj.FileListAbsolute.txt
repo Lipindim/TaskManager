@@ -22,3 +22,5 @@ D:\Repository\TaskManager\TaskManager.Services\bin\Debug\TaskManager.Domain.pdb
 D:\Repository\TaskManager\TaskManager.Services\bin\Debug\EntityFramework.xml
 D:\Repository\TaskManager\TaskManager.Services\bin\Debug\EntityFramework.SqlServer.xml
 D:\Repository\TaskManager\TaskManager.Services\obj\Debug\TaskManager.Services.csprojResolveAssemblyReference.cache
+D:\Repository\TaskManager\TaskManager.Services\bin\Debug\TaskManager.Helper.dll
+D:\Repository\TaskManager\TaskManager.Services\bin\Debug\TaskManager.Helper.pdb
