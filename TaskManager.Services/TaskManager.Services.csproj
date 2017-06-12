@@ -53,7 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contract\ITaskContract.cs" />
     <Compile Include="Contract\IUserContract.cs" />
+    <Compile Include="Contract\TaskContract.cs" />
     <Compile Include="Contract\UserContract.cs" />
     <Compile Include="GlobalSettings.cs" />
     <Compile Include="Program.cs" />
