@@ -18,5 +18,6 @@ namespace TaskManager.Services.Contract
         void AddComment(string text, int taskID, int userID);
         List<Comment> GetComments(int taskID);
         List<Alert> GetAlerts(int userID);
+        List<StatusHistory> GetStatusHistories(int taskID);
     }
 }

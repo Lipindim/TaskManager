@@ -21,6 +21,8 @@ namespace TaskManager.Domain.Entities
         [DataMember]
         public int CreatorID { get; set; }
         [DataMember]
+        public DateTime TimeCreate { get; set; }
+        [DataMember]
         public DateTime TimeStart { get; set; }
         [DataMember]
         public DateTime TimeFinish { get; set; }

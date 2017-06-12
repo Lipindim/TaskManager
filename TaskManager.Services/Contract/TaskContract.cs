@@ -63,6 +63,24 @@ namespace TaskManager.Services.Contract
             }
         }
 
+        private Repository<StatusHistory> statusHistoryRepository;
+        public Repository<StatusHistory> StatusHistoryRepository
+        {
+            get
+            {
+                if (statusHistoryRepository == null)
+                {
+                    statusHistoryRepository = new Repository<StatusHistory>(GlobalSettings.Context);
+                }
+                return statusHistoryRepository;
+            }
+
+            set
+            {
+                statusHistoryRepository = value;
+            }
+        }
+
         public void AddComment(string text, int taskID, int userID)
         {
             commentRepository.AddItem(new Comment()
@@ -137,6 +155,11 @@ namespace TaskManager.Services.Contract
             }
             AlertRepository.SaveChanges();
             return alerts;
+        }
+
+        public List<StatusHistory> GetStatusHistories(int taskID)
+        {
+            return StatusHistoryRepository.GetItems(x => x.TaskID == taskID);
         }
     }
 }
