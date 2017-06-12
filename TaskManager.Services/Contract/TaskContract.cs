@@ -127,5 +127,16 @@ namespace TaskManager.Services.Contract
                 });
             } 
         }
+
+        public List<Alert> GetAlerts(int userID)
+        {
+            List<Alert> alerts = AlertRepository.GetItems(x => x.UserID == userID && !x.Delivered);
+            foreach (var alert in alerts)
+            {
+                alert.Delivered = true;
+            }
+            AlertRepository.SaveChanges();
+            return alerts;
+        }
     }
 }

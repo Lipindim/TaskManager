@@ -17,5 +17,6 @@ namespace TaskManager.Services.Contract
         void ChangePercentComplete(int taskID, int percent);
         void AddComment(string text, int taskID, int userID);
         List<Comment> GetComments(int taskID);
+        List<Alert> GetAlerts(int userID);
     }
 }
