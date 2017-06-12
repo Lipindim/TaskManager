@@ -10,3 +10,15 @@ C:\Users\Admin\Desktop\TaskManager\TaskManager.Services\obj\Debug\TaskManager.Se
 C:\Users\Admin\Desktop\TaskManager\TaskManager.Services\bin\Debug\EntityFramework.dll
 C:\Users\Admin\Desktop\TaskManager\TaskManager.Services\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Admin\Desktop\TaskManager\TaskManager.Services\bin\Debug\EntityFramework.SqlServer.xml
+D:\Repository\TaskManager\TaskManager.Services\bin\Debug\TaskManager.Services.exe.config
+D:\Repository\TaskManager\TaskManager.Services\obj\Debug\TaskManager.Services.exe
+D:\Repository\TaskManager\TaskManager.Services\obj\Debug\TaskManager.Services.pdb
+D:\Repository\TaskManager\TaskManager.Services\bin\Debug\TaskManager.Services.exe
+D:\Repository\TaskManager\TaskManager.Services\bin\Debug\TaskManager.Services.pdb
+D:\Repository\TaskManager\TaskManager.Services\bin\Debug\EntityFramework.dll
+D:\Repository\TaskManager\TaskManager.Services\bin\Debug\EntityFramework.SqlServer.dll
+D:\Repository\TaskManager\TaskManager.Services\bin\Debug\TaskManager.Domain.dll
+D:\Repository\TaskManager\TaskManager.Services\bin\Debug\TaskManager.Domain.pdb
+D:\Repository\TaskManager\TaskManager.Services\bin\Debug\EntityFramework.xml
+D:\Repository\TaskManager\TaskManager.Services\bin\Debug\EntityFramework.SqlServer.xml
+D:\Repository\TaskManager\TaskManager.Services\obj\Debug\TaskManager.Services.csprojResolveAssemblyReference.cache
