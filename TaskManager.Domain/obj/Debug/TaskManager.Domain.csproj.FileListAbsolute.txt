@@ -27,3 +27,13 @@ D:\Repository\TaskManager\TaskManager.Domain\bin\Debug\EntityFramework.SqlServer
 D:\Repository\TaskManager\TaskManager.Domain\obj\Debug\TaskManager.Domain.csprojResolveAssemblyReference.cache
 D:\Repository\TaskManager\TaskManager.Domain\obj\Debug\TaskManager.Domain.dll
 D:\Repository\TaskManager\TaskManager.Domain\obj\Debug\TaskManager.Domain.pdb
+C:\REPO\TaskManager\TaskManager.Domain\bin\Debug\TaskManager.Domain.dll.config
+C:\REPO\TaskManager\TaskManager.Domain\bin\Debug\TaskManager.Domain.dll
+C:\REPO\TaskManager\TaskManager.Domain\bin\Debug\TaskManager.Domain.pdb
+C:\REPO\TaskManager\TaskManager.Domain\bin\Debug\EntityFramework.dll
+C:\REPO\TaskManager\TaskManager.Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\REPO\TaskManager\TaskManager.Domain\bin\Debug\EntityFramework.xml
+C:\REPO\TaskManager\TaskManager.Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\REPO\TaskManager\TaskManager.Domain\obj\Debug\TaskManager.Domain.csprojResolveAssemblyReference.cache
+C:\REPO\TaskManager\TaskManager.Domain\obj\Debug\TaskManager.Domain.dll
+C:\REPO\TaskManager\TaskManager.Domain\obj\Debug\TaskManager.Domain.pdb

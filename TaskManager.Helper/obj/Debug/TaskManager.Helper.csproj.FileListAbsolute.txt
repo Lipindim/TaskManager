@@ -2,3 +2,8 @@ D:\Repository\TaskManager\TaskManager.Helper\bin\Debug\TaskManager.Helper.dll
 D:\Repository\TaskManager\TaskManager.Helper\bin\Debug\TaskManager.Helper.pdb
 D:\Repository\TaskManager\TaskManager.Helper\obj\Debug\TaskManager.Helper.dll
 D:\Repository\TaskManager\TaskManager.Helper\obj\Debug\TaskManager.Helper.pdb
+C:\REPO\TaskManager\TaskManager.Helper\bin\Debug\TaskManager.Helper.dll
+C:\REPO\TaskManager\TaskManager.Helper\bin\Debug\TaskManager.Helper.pdb
+C:\REPO\TaskManager\TaskManager.Helper\obj\Debug\TaskManager.Helper.csprojResolveAssemblyReference.cache
+C:\REPO\TaskManager\TaskManager.Helper\obj\Debug\TaskManager.Helper.dll
+C:\REPO\TaskManager\TaskManager.Helper\obj\Debug\TaskManager.Helper.pdb

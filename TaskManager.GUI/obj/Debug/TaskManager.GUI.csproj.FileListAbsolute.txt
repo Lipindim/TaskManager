@@ -15,3 +15,17 @@ C:\Users\Admin\Documents\GeekBrains\ASP MVC\ДЗ\TaskManager\TaskManager.GUI\obj
 C:\Users\Admin\Desktop\TaskManager\TaskManager.GUI\bin\Debug\TaskManager.GUI.exe.config
 C:\Users\Admin\Desktop\TaskManager\TaskManager.GUI\obj\Debug\TaskManager.GUI.exe
 C:\Users\Admin\Desktop\TaskManager\TaskManager.GUI\obj\Debug\TaskManager.GUI.pdb
+C:\REPO\TaskManager\TaskManager.GUI\bin\Debug\TaskManager.GUI.exe.config
+C:\REPO\TaskManager\TaskManager.GUI\bin\Debug\TaskManager.GUI.exe
+C:\REPO\TaskManager\TaskManager.GUI\bin\Debug\TaskManager.GUI.pdb
+C:\REPO\TaskManager\TaskManager.GUI\obj\Debug\TaskManager.GUI.csprojResolveAssemblyReference.cache
+C:\REPO\TaskManager\TaskManager.GUI\obj\Debug\MainWindow.g.cs
+C:\REPO\TaskManager\TaskManager.GUI\obj\Debug\App.g.cs
+C:\REPO\TaskManager\TaskManager.GUI\obj\Debug\TaskManager.GUI_MarkupCompile.cache
+C:\REPO\TaskManager\TaskManager.GUI\obj\Debug\TaskManager.GUI_MarkupCompile.lref
+C:\REPO\TaskManager\TaskManager.GUI\obj\Debug\MainWindow.baml
+C:\REPO\TaskManager\TaskManager.GUI\obj\Debug\TaskManager.GUI.g.resources
+C:\REPO\TaskManager\TaskManager.GUI\obj\Debug\TaskManager.GUI.Properties.Resources.resources
+C:\REPO\TaskManager\TaskManager.GUI\obj\Debug\TaskManager.GUI.csproj.GenerateResource.Cache
+C:\REPO\TaskManager\TaskManager.GUI\obj\Debug\TaskManager.GUI.exe
+C:\REPO\TaskManager\TaskManager.GUI\obj\Debug\TaskManager.GUI.pdb

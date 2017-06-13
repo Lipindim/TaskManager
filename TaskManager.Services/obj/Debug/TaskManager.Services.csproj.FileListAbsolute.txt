@@ -24,3 +24,17 @@ D:\Repository\TaskManager\TaskManager.Services\bin\Debug\EntityFramework.SqlServ
 D:\Repository\TaskManager\TaskManager.Services\obj\Debug\TaskManager.Services.csprojResolveAssemblyReference.cache
 D:\Repository\TaskManager\TaskManager.Services\bin\Debug\TaskManager.Helper.dll
 D:\Repository\TaskManager\TaskManager.Services\bin\Debug\TaskManager.Helper.pdb
+C:\REPO\TaskManager\TaskManager.Services\bin\Debug\TaskManager.Services.exe.config
+C:\REPO\TaskManager\TaskManager.Services\obj\Debug\TaskManager.Services.exe
+C:\REPO\TaskManager\TaskManager.Services\obj\Debug\TaskManager.Services.pdb
+C:\REPO\TaskManager\TaskManager.Services\bin\Debug\TaskManager.Services.exe
+C:\REPO\TaskManager\TaskManager.Services\bin\Debug\TaskManager.Services.pdb
+C:\REPO\TaskManager\TaskManager.Services\bin\Debug\EntityFramework.dll
+C:\REPO\TaskManager\TaskManager.Services\bin\Debug\EntityFramework.SqlServer.dll
+C:\REPO\TaskManager\TaskManager.Services\bin\Debug\TaskManager.Domain.dll
+C:\REPO\TaskManager\TaskManager.Services\bin\Debug\TaskManager.Helper.dll
+C:\REPO\TaskManager\TaskManager.Services\bin\Debug\TaskManager.Domain.pdb
+C:\REPO\TaskManager\TaskManager.Services\bin\Debug\TaskManager.Helper.pdb
+C:\REPO\TaskManager\TaskManager.Services\bin\Debug\EntityFramework.xml
+C:\REPO\TaskManager\TaskManager.Services\bin\Debug\EntityFramework.SqlServer.xml
+C:\REPO\TaskManager\TaskManager.Services\obj\Debug\TaskManager.Services.csprojResolveAssemblyReference.cache

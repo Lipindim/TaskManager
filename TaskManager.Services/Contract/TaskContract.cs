@@ -130,7 +130,23 @@ namespace TaskManager.Services.Contract
 
         public List<Task> GetTasks(int userId)
         {
-            return TaskRepository.GetItems(x => x.ManagerID == userId || x.ExecutorID == userId || x.CreatorID == userId);
+            List<Task> tasks = TaskRepository.GetItems(x => x.ManagerID == userId || x.ExecutorID == userId || x.CreatorID == userId);
+            foreach (var task in tasks)
+            {
+                Status oldStatus = task.CurrentStatus;
+                task.ChangeStatus();
+                if (oldStatus != task.CurrentStatus)
+                {
+                    StatusHistoryRepository.AddItem(new StatusHistory()
+                    {
+                        Status = task.CurrentStatus,
+                        TaskID = task.ID,
+                        TimeActivated = DateTime.Now
+                    });
+                }
+            }
+            TaskRepository.SaveChanges();
+            return tasks;
         }
 
         public void CreateAlert(AlertType alertType, int taskID, params int[] usersID)

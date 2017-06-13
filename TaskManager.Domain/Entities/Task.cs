@@ -42,7 +42,28 @@ namespace TaskManager.Domain.Entities
         [DataMember]
         [ForeignKey("CreatorID")]
         public User Creator { get; set; }
+
+        public void ChangeStatus()
+        {
+            if (this.CurrentStatus == Status.Completed || this.CurrentStatus == Status.Canceled)
+            {
+                return;
+            }
+            if (this.CurrentStatus == Status.Planing && TimeStart <= DateTime.Now)
+            {
+                this.CurrentStatus = Status.Executing;
+            }
+            if (this.CurrentStatus == Status.Executing && DateTime.Now < TimeFinish && this.PersentComplete < 100)
+            {
+                this.CurrentStatus = Status.Overdue;
+            }
+            if ((this.CurrentStatus == Status.Executing || this.CurrentStatus == Status.Overdue) && this.PersentComplete >= 100)
+            {
+                this.CurrentStatus = Status.Completed;
+            }
+        }
     }
+
 
     public enum Status
     {
@@ -50,6 +71,6 @@ namespace TaskManager.Domain.Entities
         Executing,
         Completed,
         Canceled,
-        Ovedue
+        Overdue
     }
 }
