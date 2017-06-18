@@ -1,25 +1,19 @@
-﻿<Custom:RibbonWindow
+﻿<r:RibbonWindow
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskManager.GUI"
-        xmlns:Custom="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon" x:Class="TaskManager.GUI.MainWindow"
+        xmlns:r="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon" x:Class="TaskManager.GUI.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
+    <StackPanel>
 
-        <Custom:Ribbon x:Name="ribbon" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="80">
-            <Custom:RibbonApplicationMenu>
-                <Custom:RibbonApplicationMenuItem>
-                    <Custom:RibbonApplicationMenuItem.Command>
-                        <Custom:RibbonCommand>
-                            
-                        </Custom:RibbonCommand>
-                    </Custom:RibbonApplicationMenuItem.Command>
-                </Custom:RibbonApplicationMenuItem>
-            </Custom:RibbonApplicationMenu>
-        </Custom:Ribbon>
+        <r:Ribbon x:Name="ribbon" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="80">
+            <r:RibbonButton Name="menu_users" Background="Aqua" Width="100" Height="100" Click="menu_users_Click"></r:RibbonButton>
+            <r:RibbonButton Background="Green" Width="100" Height="100"></r:RibbonButton>
+        </r:Ribbon>
+        <Canvas VerticalAlignment="Stretch" Name="canvas_content"></Canvas>
 
-    </Grid>
-</Custom:RibbonWindow>
+    </StackPanel>
+</r:RibbonWindow>

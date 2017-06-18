@@ -49,3 +49,13 @@ D:\Repository\TaskManager\TaskManager.GUI\obj\Debug\MainWindow.baml
 D:\Repository\TaskManager\TaskManager.GUI\obj\Debug\TaskManager.GUI.g.resources
 D:\Repository\TaskManager\TaskManager.GUI\obj\Debug\TaskManager.GUI.Properties.Resources.resources
 D:\Repository\TaskManager\TaskManager.GUI\obj\Debug\TaskManager.GUI.csproj.GenerateResource.Cache
+D:\Repository\TaskManager\TaskManager.GUI\obj\Debug\UserControls\UsersControl.g.cs
+D:\Repository\TaskManager\TaskManager.GUI\obj\Debug\UserControls\UsersControl.baml
+D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\TaskManager.Services.exe
+D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\TaskManager.Domain.dll
+D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\EntityFramework.dll
+D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\TaskManager.Helper.dll
+D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\TaskManager.Services.pdb
+D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\TaskManager.Domain.pdb
+D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\EntityFramework.xml
+D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\TaskManager.Helper.pdb

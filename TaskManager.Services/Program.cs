@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManager.Domain.Context;
 using TaskManager.Domain.Entities;
+using TaskManager.Services.Contract;
 
 namespace TaskManager.Services
 {
@@ -18,23 +20,9 @@ namespace TaskManager.Services
             //connection.Open();
             //command.ExecuteNonQuery();
             //connection.Close();
-            TaskManagerContext context = new TaskManagerContext("Data source = Admin-PC\\SQLEXPRESS; Database = TaskManager; Integrated security = true");
-            //SqlConnection connection = new SqlConnection("Data source = Admin-PC\\SQLEXPRESS; Integrated security = true");
-            //connection.Open();
-            //connection.Close();
+            ServiceHost service = new ServiceHost(typeof(UserContract), new Uri("net.tcp://localhost:9000/IUserContract"));
+            service.Open();
 
-            Repository<User> repUser = new Repository<User>(context);
-            repUser.AddItem(new User()
-            {
-                FIO = "Пингвин",
-                Login = "Pingvin"
-            });
-
-            var users = context.Users.ToList();
-            foreach (var user in users)
-            {
-                Console.WriteLine(user.FIO);
-            }
             Console.ReadLine();
         }
     }

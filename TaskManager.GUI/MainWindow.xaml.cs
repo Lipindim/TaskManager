@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TaskManager.GUI.UserControls;
 
 namespace TaskManager.GUI
 {
@@ -24,6 +25,11 @@ namespace TaskManager.GUI
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void menu_users_Click(object sender, RoutedEventArgs e)
+        {
+            canvas_content.Children.Add(new UsersControl());
         }
     }
 }
