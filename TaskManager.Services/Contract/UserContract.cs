@@ -53,7 +53,7 @@ namespace TaskManager.Services.Contract
         public void UpdateUser(User newUser)
         {
             User existUser = UserRepository.GetItem(x => x.ID == newUser.ID);
-            ReflectionHelper.CopyFields(newUser, existUser);
+            ReflectionHelper.CopyFields(newUser, existUser, "Password", "ManagerID");
             UserRepository.SaveChanges();
         }
     }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TaskManager.GUI"
         xmlns:r="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon" x:Class="TaskManager.GUI.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="500" Width="800">
     <StackPanel>
 
         <r:Ribbon x:Name="ribbon" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="80">

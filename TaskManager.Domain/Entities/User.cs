@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -31,6 +32,10 @@ namespace TaskManager.Domain.Entities
         public string Login { get; set; }
         [DataMember]
         public string Password { get; set; }
+
+        [ForeignKey("ManagerID")]
+        [DataMember]
+        public User Manager { get; set; }
     }
     public enum Role
     {

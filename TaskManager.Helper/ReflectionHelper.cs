@@ -8,12 +8,15 @@ namespace TaskManager.Helper
 {
     public static class ReflectionHelper
     {
-        public static void CopyFields<T>(T fromObj, T toObj)
+        public static void CopyFields<T>(T fromObj, T toObj, params string[] exceptionFields)
         {
             foreach(var property in typeof(T).GetProperties())
             {
-                var value = property.GetValue(fromObj);
-                property.SetValue(toObj, value);
+                if (!exceptionFields.Contains(property.Name))
+                {
+                    var value = property.GetValue(fromObj);
+                    property.SetValue(toObj, value);
+                }
             }
         }
     }

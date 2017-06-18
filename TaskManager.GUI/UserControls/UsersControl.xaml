@@ -5,10 +5,71 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TaskManager.GUI.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel>
-        <DataGrid Name="grid_user" MinHeight="200">
-        </DataGrid>
-        <Button Name="btn_delete">Удалить</Button>
-    </StackPanel>
+             d:DesignHeight="300" d:DesignWidth="600" Background="White">
+    <WrapPanel>
+        <StackPanel>
+            <Button Name="btn_new">Новый сотрудник</Button>
+            <ListBox Name="list_user" MinHeight="200" MaxHeight="400" Width="300" MouseUp="list_user_MouseUp">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="3" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="{Binding FIO}"></TextBlock>
+                            <TextBlock Text="{Binding Post}" Grid.Column="2"></TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Name="btn_delete">Удалить</Button>
+        </StackPanel>
+        <StackPanel Name="stack_details" Width="0">
+            <WrapPanel>
+                <Label>ФИО</Label>
+                <TextBox Name="tb_fio" Width="200"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Label>Должность</Label>
+                <TextBox Name="tb_post" Width="200"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Label>Руководитель</Label>
+                <CheckBox Name="check_manager" Width="200" VerticalAlignment="Center"></CheckBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Label>Телефон</Label>
+                <TextBox Name="tb_phone" Width="200"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Label>Email</Label>
+                <TextBox Name="tb_email" Width="200"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Label>Подразделение</Label>
+                <TextBox Name="tb_subdivision" Width="200"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Label>Руководитель</Label>
+                <TextBox Name="tb_manager" Width="200"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Label>Логин</Label>
+                <TextBox Name="tb_login" Width="200"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Label>Роль</Label>
+                <ComboBox Name="combo_role" Width="200"></ComboBox>
+            </WrapPanel>
+            <WrapPanel Margin="10" HorizontalAlignment="Center">
+                <Button Name="btn_save" Click="btn_save_Click">Сохранить</Button>
+                <Button Name="btn_cancel">Отмена</Button>
+            </WrapPanel>
+        </StackPanel>
+    </WrapPanel>
 </UserControl>
