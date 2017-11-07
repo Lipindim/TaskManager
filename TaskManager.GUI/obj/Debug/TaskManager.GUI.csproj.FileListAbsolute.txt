@@ -59,3 +59,9 @@ D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\TaskManager.Services.pdb
 D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\TaskManager.Domain.pdb
 D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\EntityFramework.xml
 D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\TaskManager.Helper.pdb
+D:\Repository\TaskManager\TaskManager.GUI\obj\Debug\UserControls\TreeControl.g.cs
+D:\Repository\TaskManager\TaskManager.GUI\obj\Debug\UserControls\TreeControl.baml
+D:\Repository\TaskManager\TaskManager.GUI\obj\Debug\OrgChartTreeViewItemStyle.baml
+D:\Repository\TaskManager\TaskManager.GUI\obj\Debug\UserControls\EditUserControl.g.cs
+D:\Repository\TaskManager\TaskManager.GUI\obj\Debug\UserControls\EditUserControl.baml
+D:\Repository\TaskManager\TaskManager.GUI\obj\Debug\GeneratedInternalTypeHelper.g.cs

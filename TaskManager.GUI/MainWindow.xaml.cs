@@ -25,11 +25,12 @@ namespace TaskManager.GUI
         public MainWindow()
         {
             InitializeComponent();
+            //canvas_content.Children.Add(new TreeControl());
         }
 
         private void menu_users_Click(object sender, RoutedEventArgs e)
         {
-            canvas_content.Children.Add(new UsersControl());
+            grid_content.Children.Add(new UsersControl());
         }
     }
 }

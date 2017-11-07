@@ -6,14 +6,22 @@
         xmlns:local="clr-namespace:TaskManager.GUI"
         xmlns:r="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon" x:Class="TaskManager.GUI.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800">
-    <StackPanel>
+        Title="MainWindow" Height="600" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Name="row_second" Height="*"/>
+        </Grid.RowDefinitions>
 
-        <r:Ribbon x:Name="ribbon" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="80">
-            <r:RibbonButton Name="menu_users" Background="Aqua" Width="100" Height="100" Click="menu_users_Click"></r:RibbonButton>
-            <r:RibbonButton Background="Green" Width="100" Height="100"></r:RibbonButton>
+        <r:Ribbon x:Name="ribbon" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="160">
+            <r:RibbonGroup Header="Пользователи">
+                <r:RibbonButton Name="menu_users" Background="Blue" Width="100" Height="100" Click="menu_users_Click"></r:RibbonButton>
+            </r:RibbonGroup>
+            <r:RibbonGroup Header="group2">
+                <r:RibbonButton Background="Green" Width="100" Height="100"></r:RibbonButton>
+            </r:RibbonGroup>
         </r:Ribbon>
-        <Canvas VerticalAlignment="Stretch" Name="canvas_content"></Canvas>
 
-    </StackPanel>
+        <Grid Name="grid_content" Grid.Row="1"></Grid>
+    </Grid>
 </r:RibbonWindow>

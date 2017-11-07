@@ -26,16 +26,11 @@ namespace TaskManager.GUI.UserControls
     {
         IUserContract userContract;
         ObservableCollection<User> userCollection;
-        User selectedUser;
         private bool isNew;
 
         public UsersControl()
         {
             InitializeComponent();
-
-            userContract = ChannelFactory<IUserContract>.CreateChannel(new NetTcpBinding(), new EndpointAddress("net.tcp://localhost:9000/IUserContract"));
-            RefreshData();
-            combo_role.ItemsSource = Enum.GetValues(typeof(Role));
         }
 
         private void RefreshData()
@@ -46,51 +41,49 @@ namespace TaskManager.GUI.UserControls
 
         private void list_user_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            stack_details.Width = 300;
-
-            selectedUser = userCollection[list_user.SelectedIndex];
-            tb_email.Text = selectedUser.Email;
-            tb_fio.Text = selectedUser.FIO;
-            tb_login.Text = selectedUser.Login;
-            if (selectedUser.Manager != null)
+            if (list_user.SelectedItem != null)
             {
-                tb_manager.Text = selectedUser.Manager.FIO;
+                editUser.SetUser(list_user.SelectedItem as User);
+                isNew = false;
+                editUser.IsEnabled = true;
             }
-            else
-            {
-                tb_manager.Clear();
-            }
-            tb_phone.Text = selectedUser.Phone;
-            tb_post.Text = selectedUser.Post;
-            tb_subdivision.Text = selectedUser.Subdivision;
-            check_manager.IsChecked = selectedUser.IsManager;
-            combo_role.SelectedValue = selectedUser.Role;
-
-            isNew = false;
         }
 
-        private void btn_save_Click(object sender, RoutedEventArgs e)
+
+        private void btn_new_Click(object sender, RoutedEventArgs e)
         {
-            if (isNew)
-            {
+            editUser.SetUser(new User());
+            editUser.IsEnabled = true;
+        }
 
-            }
-            else
-            {
-                selectedUser.Email = tb_email.Text;
-                selectedUser.FIO = tb_fio.Text;
-                selectedUser.IsManager = (bool)check_manager.IsChecked;
-                selectedUser.Login = tb_login.Text;
-                selectedUser.Phone = tb_phone.Text;
-                selectedUser.Post = tb_post.Text;
-                selectedUser.Role = (Role)combo_role.SelectedValue;
-                selectedUser.Subdivision = tb_subdivision.Text;
 
-                userContract.UpdateUser(selectedUser);
-            }
-            stack_details.Width = 0;
+        private void btn_delete_Click(object sender, RoutedEventArgs e)
+        {
+            userContract.DeleteUser(userCollection[list_user.SelectedIndex].ID);
             RefreshData();
         }
 
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            userContract = ChannelFactory<IUserContract>.CreateChannel(new NetTcpBinding(), new EndpointAddress("net.tcp://localhost:9000/IUserContract"));
+            RefreshData();
+            editUser.FinishedChange += EditUser_FinishedChange;
+        }
+
+        private void EditUser_FinishedChange(bool isSave, User user)
+        {
+            if (isSave)
+            {
+                if (isNew)
+                {
+                    userContract.AddUser(user);
+                }
+                else
+                {
+                    userContract.UpdateUser(user);
+                }
+            }
+            editUser.IsEnabled = false;
+        }
     }
 }

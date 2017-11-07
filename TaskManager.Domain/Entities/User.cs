@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -32,6 +34,32 @@ namespace TaskManager.Domain.Entities
         public string Login { get; set; }
         [DataMember]
         public string Password { get; set; }
+        [DataMember]
+        public byte[] PictureArray { get; set; }
+
+        [NotMapped]
+        public Image PictureImage
+        {
+            get
+            {
+                if (PictureArray == null)
+                {
+                    return null;
+                }
+                MemoryStream ms = new MemoryStream(PictureArray);
+                Image returnImage = Image.FromStream(ms);
+                return returnImage;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    MemoryStream ms = new MemoryStream();
+                    value.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+                    PictureArray = ms.ToArray();
+                }
+            }
+        }
 
         [ForeignKey("ManagerID")]
         [DataMember]

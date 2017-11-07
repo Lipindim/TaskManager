@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Repository\TaskManager\TaskManager.GUI\App.xaml
-21293288032
+5914540699
 
-6-355827266
+81821169510
 202087958045
-MainWindow.xaml;UserControls\UsersControl.xaml;
+MainWindow.xaml;OrgChartTreeViewItemStyle.xaml;UserControls\EditUserControl.xaml;UserControls\TreeControl.xaml;UserControls\UsersControl.xaml;
 
 False
 
