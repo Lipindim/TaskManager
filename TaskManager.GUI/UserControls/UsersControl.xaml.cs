@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TaskManager.Domain.Entities;
+using TaskManager.GUI.UserControls.Base;
 using TaskManager.Services.Contract;
 
 namespace TaskManager.GUI.UserControls
@@ -22,7 +23,7 @@ namespace TaskManager.GUI.UserControls
     /// <summary>
     /// Логика взаимодействия для UserControl.xaml
     /// </summary>
-    public partial class UsersControl : UserControl
+    public partial class UsersControl : UserControl, IAddDeleteUser
     {
         IUserContract userContract;
         ObservableCollection<User> userCollection;
@@ -54,6 +55,7 @@ namespace TaskManager.GUI.UserControls
         {
             editUser.SetUser(new User());
             editUser.IsEnabled = true;
+            isNew = true;
         }
 
 
@@ -65,7 +67,7 @@ namespace TaskManager.GUI.UserControls
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            userContract = ChannelFactory<IUserContract>.CreateChannel(new NetTcpBinding(), new EndpointAddress("net.tcp://localhost:9000/IUserContract"));
+            userContract = ChannelFactory<IUserContract>.CreateChannel(new NetTcpBinding() { MaxBufferSize = 64000000, MaxReceivedMessageSize = 64000000}, new EndpointAddress("net.tcp://localhost:9000/IUserContract"));
             RefreshData();
             editUser.FinishedChange += EditUser_FinishedChange;
         }
@@ -84,6 +86,22 @@ namespace TaskManager.GUI.UserControls
                 }
             }
             editUser.IsEnabled = false;
+            RefreshData();
+        }
+
+        public void DeleteUser()
+        {
+            userContract.DeleteUser(userCollection[list_user.SelectedIndex].ID);
+            RefreshData();
+            editUser.SetUser(null);
+            editUser.IsEnabled = false;
+        }
+
+        public void AddUser()
+        {
+            editUser.SetUser(new User());
+            editUser.IsEnabled = true;
+            isNew = true;
         }
     }
 }

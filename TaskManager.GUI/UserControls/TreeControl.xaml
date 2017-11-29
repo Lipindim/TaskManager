@@ -5,29 +5,95 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TaskManager.GUI.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="600" d:DesignWidth="800" Loaded="UserControl_Loaded" Background="Black">
 
 
-    <Grid>
-        <TreeView RenderTransformOrigin="0.5,0.5">
-            <TreeViewItem Header="Fruit">
-                <TreeViewItem Header="Lime"></TreeViewItem>
-                <TreeViewItem Header="Orange"></TreeViewItem>
-                <TreeViewItem Header="Apple"></TreeViewItem>
-            </TreeViewItem>
-            <TreeViewItem Header="Colors">
-                <TreeViewItem Header="Red"></TreeViewItem>
-                <TreeViewItem Header="Orange"></TreeViewItem>
-                <TreeViewItem Header="Green"></TreeViewItem>
-            </TreeViewItem>
+    <UserControl.Resources>
+        <Style TargetType="TreeViewItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TreeViewItem">
+                        <Border BorderThickness="1"  BorderBrush="Blue" CornerRadius="10" Margin="2">
+                            <Grid Margin="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <Border Name="Bd" BorderBrush="Gray" BorderThickness="0.6" CornerRadius="8" Padding="3" Width="200">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF5D6E85" Offset="1"/>
+                                            <GradientStop Color="#FFD7E5F9" Offset="0.016"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <ContentPresenter Name="PART_Header" ContentSource="Header" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ItemsPresenter Grid.Row="1"/>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Bd" Property="Panel.Background" Value="Black" />
+                                <Setter TargetName="Bd" Property="Border.BorderBrush" Value="Green" />
+                                <Setter TargetName="Bd" Property="TextElement.Foreground" Value="Yellow" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <StackPanel HorizontalAlignment="Center" IsItemsHost="True" Margin="2" Orientation="Horizontal"  />
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid Margin="0" Width="220" Name="gridItem">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                        </Grid>
+
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+
+
+
+    <Grid Margin="3">
+
+        <TreeView Name="tree" Background="#FFCFD9FD">
+            <!--<TreeViewItem Header="First">
+            </TreeViewItem>-->
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding ChildUsers}">
+                    <Grid Margin="3" VerticalAlignment="Center" Height="60" Width="200">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"></ColumnDefinition>
+                            <ColumnDefinition Width="10"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Image Source="{Binding PictureImage}" Grid.RowSpan="2"></Image>
+                        <TextBlock TextWrapping="Wrap" Text="{Binding FIO}" Grid.Row="0" Grid.Column="2"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" Text="{Binding Post}" Grid.Row="1" Grid.Column="2"></TextBlock>
+                    </Grid>
+
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
         </TreeView>
-
-        <!--<TreeView Name="tree" Margin="5">
-            <TreeView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <Grid HorizontalAlignment="Center" IsItemsHost="True" />
-                </ItemsPanelTemplate>
-            </TreeView.ItemsPanel>
-        </TreeView>-->
     </Grid>
 </UserControl>

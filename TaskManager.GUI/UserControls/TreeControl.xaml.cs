@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TaskManager.Domain.Entities;
+using TaskManager.GUI.UserControls.Base;
 using TaskManager.Services.Contract;
 
 namespace TaskManager.GUI.UserControls
@@ -23,25 +24,31 @@ namespace TaskManager.GUI.UserControls
     /// <summary>
     /// Логика взаимодействия для TreeControl.xaml
     /// </summary>
-    public partial class TreeControl : UserControl
+    public partial class TreeControl : UserControl, ITree
     {
         IUserContract userContract;
-        ObservableCollection<User> userCollection;
+
+        public List<User> UserList { get; set; }
 
         public TreeControl()
         {
             InitializeComponent();
-
-            userContract = ChannelFactory<IUserContract>.CreateChannel(new NetTcpBinding(), new EndpointAddress("net.tcp://localhost:9000/IUserContract"));
-            userCollection = new ObservableCollection<User>(userContract.GetUsers());
-
-            User mainUser = userCollection.FirstOrDefault(x => x.ManagerID == null);
-            TreeViewItem item = new TreeViewItem();
-            item.Tag = mainUser;
-            item.Header = $"{mainUser.FIO}\n({mainUser.Post})";
-            //tree.Items.Add(item);
-            item.ExpandSubtree();
-            AddNode(item);
+        }
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            userContract = ChannelFactory<IUserContract>.CreateChannel(new NetTcpBinding() { MaxBufferSize = 64000000, MaxReceivedMessageSize = 64000000 }, new EndpointAddress("net.tcp://localhost:9000/IUserContract"));
+            UserList = userContract.GetUsers();
+            tree.ItemsSource = new List<User>() { UserList.FirstOrDefault(x => x.IsBoss) };
+            //Построить дерево
+            foreach (User user in UserList)
+            {
+                if (user.Manager != null)
+                {
+                    User manager = UserList.FirstOrDefault(x => x.ID == user.ManagerID);
+                    manager.AddChildUser(user);
+                    user.Manager = manager;
+                }
+            }
         }
 
         private void tree_Expanded(object sender, RoutedEventArgs e)
@@ -61,25 +68,49 @@ namespace TaskManager.GUI.UserControls
             //}
         }
 
-        private void AddNode(TreeViewItem item)
-        {
-            item.Items.Clear();
-            User mainUser = (User)item.Tag;
-            var users = userCollection.Where(x => x.ManagerID == mainUser.ID);
+        //private void AddNode(TreeViewItem item)
+        //{
+        //    item.Items.Clear();
+        //    User mainUser = (User)item.Tag;
+        //    var users = userCollection.Where(x => x.ManagerID == mainUser.ID);
 
-            foreach (User user in users)
-            {
-                TreeViewItem newItem = new TreeViewItem();
-                newItem.Tag = user;
-                newItem.Header = $"{user.FIO}\n({user.Post})";
-                newItem.Items.Add("*");
-                item.Items.Add(newItem);
-                if (user.IsManager)
-                {
-                    AddNode(newItem);
-                    item.ExpandSubtree();
-                }
-            }
+        //    foreach (User user in users)
+        //    {
+        //        TreeViewItem newItem = new TreeViewItem();
+        //        newItem.Tag = user;
+        //        newItem.Header = $"{user.FIO}\n({user.Post})";
+        //        newItem.Items.Add("*");
+        //        item.Items.Add(newItem);
+        //        if (user.IsManager)
+        //        {
+        //            AddNode(newItem);
+        //            item.ExpandSubtree();
+        //        }
+        //    }
+        //}
+
+        public void ChooseBoss(User boss)
+        {
+            tree.ItemsSource = new List<User>() { boss } ;
         }
+
+        public void addChildUser(User childUser)
+        {
+            if (tree.SelectedItem == null)
+            {
+                return;
+            }
+            (tree.SelectedItem as User).AddChildUser(childUser);
+            userContract.UpdateUser(childUser);
+        }
+
+        public void deleteChildUser()
+        {
+            User selectedUser = tree.SelectedItem as User;
+            selectedUser.RemoveManager();
+            userContract.UpdateUser(selectedUser);
+        }
+
+        
     }
 }

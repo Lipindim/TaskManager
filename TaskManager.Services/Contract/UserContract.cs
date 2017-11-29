@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManager.Domain.Entities;
 using TaskManager.Helper;
+using System.Data.Entity;
 
 namespace TaskManager.Services.Contract
 {
@@ -47,14 +48,37 @@ namespace TaskManager.Services.Contract
 
         public List<User> GetUsers()
         {
-            return UserRepository.GetItems();
+            //var items = UserRepository.GetItems().Include(x => x.ChildUser).Include(x => x.Manager).ToList();
+            return UserRepository.GetItems().Include(x => x.Manager).ToList();
         }
 
         public void UpdateUser(User newUser)
         {
             User existUser = UserRepository.GetItem(x => x.ID == newUser.ID);
-            ReflectionHelper.CopyFields(newUser, existUser, "Password", "ManagerID", "Manager");
+            ReflectionHelper.CopyFields(newUser, existUser, "Password", "Manager");
             UserRepository.SaveChanges();
+        }
+
+        public void ChooseBoss(User boss)
+        {
+            foreach (User user in GetUsers())
+            {
+                if (user.ID == boss.ID)
+                {
+                    user.IsBoss = true;
+                }
+                else
+                {
+                    user.IsBoss = false;
+                    user.ManagerID = null;
+                    user.Manager = null;
+                }
+            }
+            UserRepository.SaveChanges();
+        }
+        public User GetBoss()
+        {
+            return GetUsers().FirstOrDefault(x => x.IsBoss);
         }
     }
 }

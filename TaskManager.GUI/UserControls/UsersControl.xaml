@@ -5,20 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TaskManager.GUI.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="600" Background="White" Loaded="UserControl_Loaded">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="25"/>
-        </Grid.RowDefinitions>
+             d:DesignHeight="500" d:DesignWidth="600" Background="Black" Loaded="UserControl_Loaded">
+    <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="30"/>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Button Name="btn_new" Click="btn_new_Click" >Новый сотрудник</Button>
-        <ListBox Grid.Row="1" Name="list_user" MouseUp="list_user_MouseUp">
+        <ListBox Name="list_user" MouseUp="list_user_MouseUp" Background="#FFCFD9FD">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="3" VerticalAlignment="Center">
@@ -36,8 +30,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Grid.Row="2" Name="btn_delete" Click="btn_delete_Click">Удалить</Button>
 
-        <local:EditUserControl Grid.Column="2"  Grid.RowSpan="3" x:Name="editUser"  IsEnabled="False"/>
+        <local:EditUserControl Grid.Column="2" x:Name="editUser"  IsEnabled="False"/>
     </Grid>
 </UserControl>

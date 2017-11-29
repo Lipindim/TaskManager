@@ -6,20 +6,35 @@
         xmlns:local="clr-namespace:TaskManager.GUI"
         xmlns:r="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon" x:Class="TaskManager.GUI.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid>
+        Title="Консоль администратора" Height="700" Width="800" WindowStartupLocation="CenterScreen" Loaded="RibbonWindow_Loaded" Background="Black">
+    <Grid >
         <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="140"/>
             <RowDefinition Name="row_second" Height="*"/>
         </Grid.RowDefinitions>
 
-        <r:Ribbon x:Name="ribbon" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="160">
-            <r:RibbonGroup Header="Пользователи">
-                <r:RibbonButton Name="menu_users" Background="Blue" Width="100" Height="100" Click="menu_users_Click"></r:RibbonButton>
-            </r:RibbonGroup>
-            <r:RibbonGroup Header="group2">
-                <r:RibbonButton Background="Green" Width="100" Height="100"></r:RibbonButton>
-            </r:RibbonGroup>
+        <r:Ribbon x:Name="ribbon" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="140" Grid.RowSpan="1" SelectionChanged="ribbon_SelectionChanged" Background="#FFA8A8A8">
+            <r:RibbonTab Name="tab_users" Header="Пользователи">
+                <r:RibbonGroup Header="Пользователи">
+                    <r:RibbonButton Name="menu_addUser" Width="80" Height="60" Click="menu_addUser_Click" Label="Добавить" LargeImageSource="Images/addUser100.png"></r:RibbonButton>
+                    <r:RibbonButton Name="menu_deleteUser" Width="80" Height="60" Click="menu_deleteUser_Click" Label="Удалить" LargeImageSource="Images/deleteUser.png"></r:RibbonButton>
+                </r:RibbonGroup>
+            </r:RibbonTab>
+            <r:RibbonTab Name="tab_organization" Header="Орг структура">
+                <r:RibbonGroup Header="Босс">
+                    <r:RibbonButton Name="menu_chooseBoss" Width="100" Height="100" Click="menu_chooseBoss_Click" Label="Выбрать босса" LargeImageSource="Images/ChooseBoss.png"></r:RibbonButton>
+                </r:RibbonGroup>
+                <r:RibbonGroup Header="Подчиненные">
+                    <r:RibbonButton Name="menu_addChild" Width="80" Height="100" Click="menu_addChild_Click" Label="Выбрать" LargeImageSource="Images/chooseUser.png"></r:RibbonButton>
+                    <r:RibbonButton Name="menu_deleteChild" Width="80" Height="100" Click="menu_deleteChild_Click" Label="Убрать" LargeImageSource="Images/UserOut.png"></r:RibbonButton>
+                </r:RibbonGroup>
+            </r:RibbonTab>
+
+
+            <r:Ribbon.ApplicationMenu>
+                <r:RibbonApplicationMenu Visibility="Collapsed" >
+                </r:RibbonApplicationMenu>
+            </r:Ribbon.ApplicationMenu>
         </r:Ribbon>
 
         <Grid Name="grid_content" Grid.Row="1"></Grid>

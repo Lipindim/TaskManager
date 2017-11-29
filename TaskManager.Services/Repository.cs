@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -27,9 +28,9 @@ namespace TaskManager.Services
             context.Set<T>().Remove(removeItem);
             context.SaveChanges();
         }
-        public List<T> GetItems()
+        public DbSet<T> GetItems()
         {
-            return context.Set<T>().ToList();
+            return context.Set<T>();
         }
         public List<T> GetItems(Expression<Func<T,bool>> predicate)
         {

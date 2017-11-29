@@ -1,0 +1,27 @@
+﻿<Window xmlns:Controls="clr-namespace:TaskManager.Client.Controls"  x:Class="TaskManager.Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskManager.Client"
+        mc:Ignorable="d"
+        Title="Клиент" Height="600" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Background="Black">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TabControl Name="tabControl" Grid.Row="1" Background="Black">
+            <TabItem Name="tab_tasks" Header="Задачи">
+                <Controls:TaskListControl x:Name="taskListControl" Grid.Row="1" />
+            </TabItem>
+            <TabItem Name="tab_editTask" Header="Описание">
+                <Controls:EditTaskControl x:Name="editTaskControl"></Controls:EditTaskControl>
+            </TabItem>
+        </TabControl>
+        
+       
+    </Grid>
+</Window>

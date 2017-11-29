@@ -15,6 +15,8 @@ namespace TaskManager.Domain.Entities
         [DataMember]
         public string Name { get; set; }
         [DataMember]
+        public string Text { get; set; }
+        [DataMember]
         public int ExecutorID { get; set; }
         [DataMember]
         public int ManagerID { get; set; }
@@ -42,6 +44,23 @@ namespace TaskManager.Domain.Entities
         [DataMember]
         [ForeignKey("CreatorID")]
         public User Creator { get; set; }
+        
+        [NotMapped]
+        public double PassedTime
+        {
+            get
+            {
+                return (DateTime.Now - TimeStart).TotalDays / (TimeFinish - TimeStart).TotalDays * 100;
+            }
+        }
+        [NotMapped]
+        public double Lag
+        {
+            get
+            {
+                return PassedTime - PersentComplete;
+            }
+        }
 
         public void ChangeStatus()
         {

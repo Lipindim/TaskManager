@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.ServiceModel;
+using System.ServiceModel.Description;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManager.Domain.Context;
@@ -20,8 +21,11 @@ namespace TaskManager.Services
             //connection.Open();
             //command.ExecuteNonQuery();
             //connection.Close();
-            ServiceHost service = new ServiceHost(typeof(UserContract), new Uri("net.tcp://localhost:9000/IUserContract"));
+            ServiceHost service = new ServiceHost(typeof(UserContract));
             service.Open();
+
+            ServiceHost serviceTask = new ServiceHost(typeof(TaskContract));
+            serviceTask.Open();
 
             Console.ReadLine();
         }

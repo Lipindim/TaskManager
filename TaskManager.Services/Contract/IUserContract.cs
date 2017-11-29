@@ -25,5 +25,13 @@ namespace TaskManager.Services.Contract
 
         [OperationContract]
         void UpdateUser(User newUser);
+
+        [OperationContract]
+        void ChooseBoss(User boss);
+
+        [OperationContract]
+        User GetBoss();
+
+        
     }
 }
