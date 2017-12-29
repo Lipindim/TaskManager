@@ -36,7 +36,7 @@ namespace TaskManager.Client.Controls
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             TaskContract = ContractManager.GetTaskContract();
-            lb_task.ItemsSource = TaskContract.GetTasks(1).OrderBy(x => x.TimeFinish).ToList();
+            lb_task.ItemsSource = TaskContract.GetTasks(GlobalSettings.CurrentUser.ID).OrderBy(x => x.TimeFinish).ToList();
         }
 
         private void lb_task_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -46,6 +46,14 @@ namespace TaskManager.Client.Controls
                 TaskSelected(lb_task.SelectedItem as Task);
             }
             //new EditTaskWindow().ShowDialog();
+        }
+
+        private void btn_addTask_Click(object sender, RoutedEventArgs e)
+        {
+            if (TaskSelected != null)
+            {
+                TaskSelected(new Task(true) { Manager = GlobalSettings.CurrentUser, Creator = GlobalSettings.CurrentUser });
+            }
         }
     }
 }

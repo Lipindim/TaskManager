@@ -10,10 +10,11 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="83*"/>
         </Grid.RowDefinitions>
 
-        <TabControl Name="tabControl" Grid.Row="1" Background="Black">
+        <TabControl Name="tabControl" Grid.Row="1" Background="Black" Grid.RowSpan="2">
             <TabItem Name="tab_tasks" Header="Задачи">
                 <Controls:TaskListControl x:Name="taskListControl" Grid.Row="1" />
             </TabItem>
@@ -21,7 +22,7 @@
                 <Controls:EditTaskControl x:Name="editTaskControl"></Controls:EditTaskControl>
             </TabItem>
         </TabControl>
-        
-       
+
+
     </Grid>
 </Window>

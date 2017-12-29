@@ -1,0 +1,31 @@
+﻿<Window x:Class="TaskManager.Client.SelectUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskManager.Client"
+        mc:Ignorable="d"
+        Title="Выбор сотрудника" Height="600" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="20">
+    <Grid>
+        <ListBox Name="list_user" MouseDoubleClick="list_user_MouseDoubleClick" Background="#FFCFD9FD">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="3" VerticalAlignment="Center" Height="60">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"></ColumnDefinition>
+                            <ColumnDefinition Width="10"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Image Source="{Binding PictureImage}" Grid.RowSpan="2"></Image>
+                        <TextBlock Text="{Binding FIO}" Grid.Row="0" Grid.Column="2"></TextBlock>
+                        <TextBlock Text="{Binding Post}" Grid.Row="1" Grid.Column="2"></TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

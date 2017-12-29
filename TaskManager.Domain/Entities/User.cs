@@ -120,6 +120,11 @@ namespace TaskManager.Domain.Entities
 
             ManagerID = null;
         }
+
+        public override string ToString()
+        {
+            return this.FIO;
+        }
     }
     public enum Role
     {

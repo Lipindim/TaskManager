@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using TaskManager.Domain.Entities;
+using TaskManager.Helper;
 
 namespace TaskManager.Services.Contract
 {
@@ -81,9 +83,27 @@ namespace TaskManager.Services.Contract
             }
         }
 
+        public UserContract UserContract
+        {
+            get
+            {
+                if (userContract == null)
+                {
+                    userContract = new UserContract();
+                }
+                return userContract;
+            }
+
+            set
+            {
+                userContract = value;
+            }
+        }
+        private UserContract userContract;
+
         public void AddComment(string text, int taskID, int userID)
         {
-            commentRepository.AddItem(new Comment()
+            CommentRepository.AddItem(new Comment()
             {
                 TaskID = taskID,
                 Text = text,
@@ -94,6 +114,12 @@ namespace TaskManager.Services.Contract
 
         public void AddTask(Task newTask)
         {
+            newTask.ManagerID = newTask.Manager.ID;
+            newTask.CreatorID = newTask.Creator.ID;
+            newTask.ExecutorID = newTask.Executor.ID;
+            newTask.Manager = null;
+            newTask.Executor = null;
+            newTask.Creator = null;
             TaskRepository.AddItem(newTask);
         }
 
@@ -120,7 +146,7 @@ namespace TaskManager.Services.Contract
 
         public List<Comment> GetComments(int taskID)
         {
-            return CommentRepository.GetItems(x => x.TaskID == taskID);
+            return CommentRepository.GetItems().Include(x => x.User).Where(x => x.TaskID == taskID).ToList();
         }
 
         public Task GetTask(int taskID)
@@ -130,7 +156,7 @@ namespace TaskManager.Services.Contract
 
         public List<Task> GetTasks(int userId)
         {
-            List<Task> tasks = TaskRepository.GetItems(x => x.ManagerID == userId || x.ExecutorID == userId || x.CreatorID == userId);
+            List<Task> tasks = TaskRepository.GetItems().Include(x => x.Manager).Include(x => x.Creator).Include(x => x.Executor).Where(x => x.ManagerID == userId || x.ExecutorID == userId || x.CreatorID == userId).ToList();
             foreach (var task in tasks)
             {
                 Status oldStatus = task.CurrentStatus;
@@ -176,6 +202,13 @@ namespace TaskManager.Services.Contract
         public List<StatusHistory> GetStatusHistories(int taskID)
         {
             return StatusHistoryRepository.GetItems(x => x.TaskID == taskID);
+        }
+
+        public void UpdateTask(Task currentTask)
+        {
+            Task existTask = GetTask(currentTask.ID);
+            ReflectionHelper.CopyFields(currentTask, existTask,"Executor", "Creator", "Manager");
+            TaskRepository.SaveChanges();
         }
     }
 }

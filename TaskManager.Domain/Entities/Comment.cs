@@ -28,5 +28,10 @@ namespace TaskManager.Domain.Entities
         [DataMember]
         [ForeignKey("UserID")]
         public User User { get; set; }
+
+        public override string ToString()
+        {
+            return $"{User.FIO} ({TimeCreated.ToString("dd.MM.yyyy HH:mm")}) \n {Text}";
+        }
     }
 }

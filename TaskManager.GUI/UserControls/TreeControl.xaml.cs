@@ -37,7 +37,7 @@ namespace TaskManager.GUI.UserControls
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             userContract = ChannelFactory<IUserContract>.CreateChannel(new NetTcpBinding() { MaxBufferSize = 64000000, MaxReceivedMessageSize = 64000000 }, new EndpointAddress("net.tcp://localhost:9000/IUserContract"));
-            UserList = userContract.GetUsers();
+            UserList = userContract.GetUsers().ToList();
             tree.ItemsSource = new List<User>() { UserList.FirstOrDefault(x => x.IsBoss) };
             //Построить дерево
             foreach (User user in UserList)

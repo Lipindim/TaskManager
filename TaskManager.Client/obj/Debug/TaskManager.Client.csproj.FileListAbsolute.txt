@@ -41,3 +41,9 @@ D:\Repository\TaskManager\TaskManager.Client\bin\Debug\ro\Xceed.Wpf.AvalonDock.r
 D:\Repository\TaskManager\TaskManager.Client\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 D:\Repository\TaskManager\TaskManager.Client\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 D:\Repository\TaskManager\TaskManager.Client\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+D:\Repository\TaskManager\TaskManager.Client\obj\Debug\Windows\CommentWindow.g.cs
+D:\Repository\TaskManager\TaskManager.Client\obj\Debug\Windows\CommentWindow.baml
+D:\Repository\TaskManager\TaskManager.Client\obj\Debug\Windows\SelectUserWindow.g.cs
+D:\Repository\TaskManager\TaskManager.Client\obj\Debug\Windows\SelectUserWindow.baml
+D:\Repository\TaskManager\TaskManager.Client\obj\Debug\Windows\LoginWindow.g.cs
+D:\Repository\TaskManager\TaskManager.Client\obj\Debug\Windows\LoginWindow.baml

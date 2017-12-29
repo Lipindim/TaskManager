@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>TaskManager.Client.MyApp</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -78,6 +81,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\InvertBoolConverter.cs" />
+    <Compile Include="MyApp.cs" />
+    <Compile Include="Windows\CommentWindow.xaml.cs">
+      <DependentUpon>CommentWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Base\ITaskSelect.cs" />
     <Compile Include="Controls\Base\ITaskEdit.cs" />
     <Compile Include="Controls\EditTaskControl.xaml.cs">
@@ -86,6 +94,16 @@
     <Compile Include="Controls\TaskListControl.xaml.cs">
       <DependentUpon>TaskListControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SelectUserWindow.xaml.cs">
+      <DependentUpon>SelectUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Windows\CommentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\EditTaskControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -103,10 +121,19 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Converter\ColorConverter.cs" />
+    <Compile Include="GlobalSettings.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SelectUserWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

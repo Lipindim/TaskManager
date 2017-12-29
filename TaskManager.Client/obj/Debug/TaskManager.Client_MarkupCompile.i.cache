@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Repository\TaskManager\TaskManager.Client\App.xaml
-31423435855
+61851326007
 
-142092547092
+20-1578577501
 222124720665
-Controls\EditTaskControl.xaml;Controls\TaskListControl.xaml;MainWindow.xaml;
+Windows\CommentWindow.xaml;Controls\EditTaskControl.xaml;Controls\TaskListControl.xaml;MainWindow.xaml;Windows\LoginWindow.xaml;Windows\SelectUserWindow.xaml;
 
-True
+False
 

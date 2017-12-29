@@ -21,6 +21,7 @@ namespace TaskManager.Services
         public void AddItem(T addItem)
         {
             context.Set<T>().Add(addItem);
+            var changes = context.ChangeTracker.Entries();
             context.SaveChanges();
         }
         public void RemoveItem(T removeItem)

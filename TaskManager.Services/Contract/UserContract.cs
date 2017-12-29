@@ -46,10 +46,10 @@ namespace TaskManager.Services.Contract
             return UserRepository.GetItem(x => x.ID == id);
         }
 
-        public List<User> GetUsers()
+        public IQueryable<User> GetUsers()
         {
             //var items = UserRepository.GetItems().Include(x => x.ChildUser).Include(x => x.Manager).ToList();
-            return UserRepository.GetItems().Include(x => x.Manager).ToList();
+            return UserRepository.GetItems().Include(x => x.Manager);
         }
 
         public void UpdateUser(User newUser)
@@ -79,6 +79,18 @@ namespace TaskManager.Services.Contract
         public User GetBoss()
         {
             return GetUsers().FirstOrDefault(x => x.IsBoss);
+        }
+
+        public List<User> GetSubordinates(int userId)
+        {
+            return GetUsers().Where(x => x.ManagerID == userId).ToList();
+        }
+
+        public void SetPassword(int userId, string password)
+        {
+            User currentUser = GetUser(userId);
+            currentUser.Password = password;
+            UserRepository.SaveChanges();
         }
     }
 }

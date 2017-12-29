@@ -12,7 +12,7 @@ namespace TaskManager.Services.Contract
     public interface IUserContract
     {
         [OperationContract]
-        List<User> GetUsers();
+        IQueryable<User> GetUsers();
 
         [OperationContract]
         User GetUser(int id);
@@ -32,6 +32,12 @@ namespace TaskManager.Services.Contract
         [OperationContract]
         User GetBoss();
 
-        
+        [OperationContract]
+        List<User> GetSubordinates(int userId);
+
+        [OperationContract]
+        void SetPassword(int userId, string password);
+
+
     }
 }

@@ -1,0 +1,36 @@
+﻿<Window x:Class="TaskManager.Client.CommentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskManager.Client"
+        mc:Ignorable="d"
+        Title="Добавить комментарий" Height="250" Width="350" Background="Black" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <TextBox Name="tb_text" Margin="15" TextWrapping="Wrap"></TextBox>
+        <Border Grid.Row="1" Background="Black">
+            <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Name="btn_save" Width="100" Margin="10 0"  Height="30" Click="btn_save_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                            <GradientStop Color="#FFD0F5BF" Offset="0"/>
+                            <GradientStop Color="#FF537244" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background> Сохранить
+                </Button>
+                <Button Width="100" Margin="10 0" Click="Button_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                            <GradientStop Color="#FFF3BEB6" Offset="0"/>
+                            <GradientStop Color="#FFA05346" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background> Отмена
+                </Button>
+            </WrapPanel>
+        </Border>
+    </Grid>
+</Window>

@@ -16,6 +16,9 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <StackPanel>
+            <Button Name="btn_addTask" Height="50" Width="100" Click="btn_addTask_Click">Добавить задачу</Button>
+        </StackPanel>
         <ListBox Grid.Row="0" Grid.Column="1" Name="lb_task" Background="#FF8C8C91" MouseDoubleClick="lb_task_MouseDoubleClick">
             <ListBox.ItemContainerStyle>
                 <Style>

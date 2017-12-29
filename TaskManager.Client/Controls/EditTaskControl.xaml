@@ -4,9 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TaskManager.Client.Controls"
+             xmlns:conv="clr-namespace:TaskManager.Client.Converter"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="700" Background="Gray" FontSize="14">
-    <Grid>
+             d:DesignHeight="600" d:DesignWidth="700" Background="Gray" FontSize="14" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <conv:InvertBoolConverter x:Key="invertBoolConvetrer"></conv:InvertBoolConverter>
+    </UserControl.Resources>
+    <Grid Background="#FFBCCADE">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="30"/>
@@ -31,32 +35,61 @@
         </Grid.ColumnDefinitions>
 
         <WrapPanel HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="100">
-        <TextBox  Margin="4" FontSize="18" HorizontalContentAlignment="Center" Text="{Binding Name}" Background="#FFC7DADA"></TextBox>
+        <TextBox  Margin="4" FontSize="18" HorizontalContentAlignment="Center" Text="{Binding Name}" Background="#FFF5C55D" IsReadOnly="{Binding CreateAccess, Converter={StaticResource invertBoolConvetrer}}"></TextBox>
         </WrapPanel>
         <TextBlock Grid.Row="1" FontSize="14" Margin="4">Описание</TextBlock>
-        <TextBox TextWrapping="Wrap" Grid.Row="2" Grid.ColumnSpan="2" Margin="4" Text="{Binding Text}"></TextBox>
+        <TextBox TextWrapping="Wrap" Grid.Row="2" Grid.ColumnSpan="2" Margin="4" Text="{Binding Text}" IsReadOnly="{Binding CreateAccess, Converter={StaticResource invertBoolConvetrer}}"></TextBox>
 
-        <TextBlock Grid.Row="3" Margin="4">Выполнить до</TextBlock>
-        <xctk:DateTimePicker Grid.Row="3" Grid.Column="1" Format="Custom" FormatString="dd.MM.yyyy HH:mm" Margin="2" Value="{Binding TimeFinish}"></xctk:DateTimePicker>
+        <TextBlock Grid.Row="3" Margin="4">Старт задачи</TextBlock>
+        <xctk:DateTimePicker Grid.Row="3" Grid.Column="1" Format="Custom" Width="150" FormatString="dd.MM.yyyy HH:mm" Margin="2" Value="{Binding TimeStart}" HorizontalAlignment="Left" IsReadOnly="{Binding CreateAccess, Converter={StaticResource invertBoolConvetrer}}"></xctk:DateTimePicker>
+        <TextBlock Grid.Row="4" Margin="4">Выполнить до</TextBlock>
+        <xctk:DateTimePicker Grid.Row="4" Grid.Column="1" Format="Custom" Width="150" FormatString="dd.MM.yyyy HH:mm" Margin="2" Value="{Binding TimeFinish}" HorizontalAlignment="Left" IsReadOnly="{Binding CreateAccess, Converter={StaticResource invertBoolConvetrer}}"></xctk:DateTimePicker>
 
         <TextBlock Grid.Row="5" Margin="4">Создал</TextBlock>
         <TextBlock Grid.Row="6" Margin="4">Назначил</TextBlock>
         <TextBlock Grid.Row="7" Margin="4">Исполнитель</TextBlock>
 
-        <TextBox Grid.Row="5" Grid.Column="1" Margin="2"></TextBox>
-        <TextBox Grid.Row="6" Grid.Column="1" Margin="2"></TextBox>
-        <TextBox Grid.Row="7" Grid.Column="1" Margin="2"></TextBox>
+        <TextBox Grid.Row="5" Grid.Column="1" Margin="2" IsEnabled="False" Text="{Binding Creator, Mode=OneWay}"></TextBox>
+        <TextBox Grid.Row="6" Grid.Column="1" Margin="2" IsEnabled="False" Text="{Binding Manager, Mode=OneWay}"></TextBox>
+        <Button Name="btn_selectExecutor" Grid.Row="7" Grid.Column="1" Margin="2,4,2,0" Content="{Binding Executor, Mode=OneWay}" Cursor="Hand" HorizontalContentAlignment="Left" Click="btn_selectExecutor_Click"></Button>
 
         <WrapPanel Grid.Row="9" Grid.ColumnSpan="2">
-            <TextBlock Margin="4">Выполнено</TextBlock>
-            <TextBox Width="50" Margin="4"></TextBox>
-            <TextBlock Margin="0 4">%</TextBlock>
+            <TextBlock Margin="4" VerticalAlignment="Bottom">Выполнено</TextBlock>
+            <TextBox Width="40" Margin="4" Text="{Binding PersentComplete}" FontSize="16" Padding="0"></TextBox>
+            <TextBlock Margin="0 4" VerticalAlignment="Bottom">%</TextBlock>
         </WrapPanel>
-        <Slider Grid.Row="10" Grid.ColumnSpan="4"></Slider>
+        <Slider Grid.Row="10" Grid.ColumnSpan="4" Value="{Binding PersentComplete}" Maximum="100"></Slider>
 
         <TextBlock Grid.Row="1" Grid.Column="3" FontSize="18">Комментарии</TextBlock>
-        <TextBox Grid.Row="2" Grid.RowSpan="5" Grid.Column="3" TextWrapping="Wrap" Margin="4"></TextBox>
-        <Button Grid.Column="3" Grid.Row="7" Margin="4 2">Добавить сообщение</Button>
+        <ListBox Name="lb_comment" Grid.Row="2" Grid.RowSpan="7" Grid.Column="3"  Margin="4" AlternationCount="2">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Margin" Value="5,3"/>
+                    <Setter Property="Padding" Value="5"/>
+                    <Setter Property="Background" Value="LightSteelBlue"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                <Border x:Name="brd" Background="{TemplateBinding Background}" 
+                                         BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter Margin="{TemplateBinding Padding}"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                        <Setter Property="Background" Value="#a2bfeb"/>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="BorderThickness" Value="1"/>
+                                        <Setter Property="BorderBrush" Value="Black"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+        <Button Name="btn_addComment" Grid.Column="3" Grid.Row="9" Margin="4 2" Click="btn_addComment_Click" IsEnabled="{Binding CreateAccess, Converter={StaticResource invertBoolConvetrer}}">Добавить комментарий</Button>
 
         <Border Grid.Row="100" Grid.ColumnSpan="100" Background="Black">
             <WrapPanel VerticalAlignment="Bottom" HorizontalAlignment="Right">
@@ -67,7 +100,7 @@
                             <GradientStop Color="#FF537244" Offset="1"/>
                         </LinearGradientBrush>
                     </Button.Background> Сохранить</Button>
-                <Button Width="100" Margin="2">
+                <Button Name="btn_cancel" Width="100" Margin="2" Click="btn_cancel_Click">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                             <GradientStop Color="#FFF3BEB6" Offset="0"/>

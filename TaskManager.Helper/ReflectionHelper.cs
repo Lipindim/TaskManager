@@ -10,9 +10,9 @@ namespace TaskManager.Helper
     {
         public static void CopyFields<T>(T fromObj, T toObj, params string[] exceptionFields)
         {
-            foreach(var property in typeof(T).GetProperties())
+            foreach (var property in typeof(T).GetProperties())
             {
-                if (!exceptionFields.Contains(property.Name))
+                if (!exceptionFields.Contains(property.Name) && property.SetMethod != null)
                 {
                     var value = property.GetValue(fromObj);
                     property.SetValue(toObj, value);

@@ -20,6 +20,9 @@ namespace TaskManager.Services.Contract
         void AddTask(Task newTask);
 
         [OperationContract]
+        void UpdateTask(Task currentTask);
+
+        [OperationContract]
         void CancelTask(int taskID);
 
         [OperationContract]

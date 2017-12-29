@@ -15,6 +15,7 @@ using TaskManager.Client.Controls.Base;
 using TaskManager.Domain.Entities;
 using TaskManager.Services;
 using TaskManager.Services.Contract;
+using TaskManager.Services.Helpers;
 
 namespace TaskManager.Client
 {
@@ -24,6 +25,7 @@ namespace TaskManager.Client
     public partial class MainWindow : Window
     {
         public ITaskContract TaskContract { get; set; }
+        public IUserContract UserContract { get; set; }
 
         public ITaskEdit iTaskEdit { get; set; }
         public ITaskSelect iTaskSelect { get; set; }
@@ -31,16 +33,17 @@ namespace TaskManager.Client
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             TaskContract = ContractManager.GetTaskContract();
+            UserContract = ContractManager.GetUserContract();
             iTaskEdit = editTaskControl;
             iTaskSelect = taskListControl;
             iTaskSelect.TaskSelected += ITaskSelect_TaskSelected;
             iTaskEdit.EditEnd += ITaskEdit_EditEnd;
-            //lb_task.ItemsSource = TaskContract.GetTasks(1).OrderBy(x => x.TimeFinish).ToList();
         }
 
         private void ITaskEdit_EditEnd()
