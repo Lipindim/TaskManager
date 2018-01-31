@@ -55,5 +55,11 @@ namespace TaskManager.Client.Controls
                 TaskSelected(new Task(true) { Manager = GlobalSettings.CurrentUser, Creator = GlobalSettings.CurrentUser });
             }
         }
+
+        private void radio_plan_Checked(object sender, RoutedEventArgs e)
+        {
+            Status selectedStatus = (Status)Enum.Parse(typeof(Status), (sender as RadioButton).Name.Replace("radio_", string.Empty));
+            lb_task.ItemsSource = TaskContract.GetTasks(GlobalSettings.CurrentUser.ID).Where(x => x.CurrentStatus == selectedStatus).OrderBy(x => x.TimeFinish).ToList();
+        }
     }
 }

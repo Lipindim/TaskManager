@@ -13,7 +13,7 @@ namespace TaskManager.Services
         {
             get
             {
-                return new TaskManagerContext("Data source = Admin-PC\\SQLEXPRESS; Database = TaskManager; Integrated security = true");
+                return new TaskManagerContext("Data source = DIM\\SQLEXPRESS; Database = TaskManager; Integrated security = true");
             }
         }
     }

@@ -37,3 +37,5 @@ C:\REPO\TaskManager\TaskManager.Domain\obj\Debug\TaskManager.Domain.csprojResolv
 C:\REPO\TaskManager\TaskManager.Domain\obj\Debug\TaskManager.Domain.dll
 C:\REPO\TaskManager\TaskManager.Domain\obj\Debug\TaskManager.Domain.pdb
 D:\Repository\TaskManager\TaskManager.Domain\obj\Debug\TaskManager.Domain.csprojResolveAssemblyReference.cache
+D:\Repository\TaskManager\TaskManager.Domain\bin\Debug\TaskManager.Helper.dll
+D:\Repository\TaskManager\TaskManager.Domain\bin\Debug\TaskManager.Helper.pdb

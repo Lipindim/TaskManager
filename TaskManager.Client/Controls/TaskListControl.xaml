@@ -9,6 +9,7 @@
              d:DesignHeight="500" d:DesignWidth="600" Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <conv:ColorConverter x:Key="colorConverter"></conv:ColorConverter>
+        <conv:ExecutorConverter x:Key="executorConverter"></conv:ExecutorConverter>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -16,8 +17,17 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel>
+        <StackPanel Margin="5">
             <Button Name="btn_addTask" Height="50" Width="100" Click="btn_addTask_Click">Добавить задачу</Button>
+            <Border Margin="5" BorderBrush="Gray" BorderThickness="2">
+                <StackPanel>
+                    <RadioButton Height="20" Name="radio_Planing" Foreground="White" Checked="radio_plan_Checked">Запланированные</RadioButton>
+                    <RadioButton Height="20" Name="radio_Executing" Foreground="White" Checked="radio_plan_Checked">Текущие</RadioButton>
+                    <RadioButton Height="20" Name="radio_Completed" Foreground="White" Checked="radio_plan_Checked">Выполненные</RadioButton>
+                    <RadioButton Height="20" Name="radio_Overdue" Foreground="White" Checked="radio_plan_Checked">Просроченные</RadioButton>
+                    <RadioButton Name="radio_Canceled" Foreground="White" Checked="radio_plan_Checked">Отмененные</RadioButton>
+                </StackPanel>
+            </Border>
         </StackPanel>
         <ListBox Grid.Row="0" Grid.Column="1" Name="lb_task" Background="#FF8C8C91" MouseDoubleClick="lb_task_MouseDoubleClick">
             <ListBox.ItemContainerStyle>
@@ -59,6 +69,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <WrapPanel>
                             <Image Height="25" Width="25" Source="/TaskManager.Client;component/Images/work.png" Margin="2,2,-25,2" Panel.ZIndex="100"></Image>
@@ -72,7 +83,11 @@
                                 <ProgressBar Foreground="{Binding Path=Lag, Converter={StaticResource colorConverter}}" Width="100" Height="30" Value="{Binding Path=PassedTime, Mode=OneWay}"></ProgressBar>
                             </Border>
                         </WrapPanel>
-                        <TextBlock Text="{Binding Name}" Grid.Row="0" Grid.Column="2"></TextBlock>
+                        <WrapPanel Grid.Row="0" Grid.Column="2">
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                            <TextBlock Text="{Binding Executor, Converter={StaticResource executorConverter}}"></TextBlock>
+                        </WrapPanel>
+                        
                         <WrapPanel Grid.Row="1" Grid.Column="2">
                             <TextBlock Text="До: "></TextBlock>
                             <TextBlock Text="{Binding TimeFinish, StringFormat='{}{0:dd.MM.yyyy HH:mm}'}"></TextBlock>

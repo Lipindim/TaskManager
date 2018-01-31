@@ -148,15 +148,15 @@ namespace TaskManager.Domain.Entities
             {
                 return;
             }
-            if (this.CurrentStatus == Status.Planing && TimeStart <= DateTime.Now)
+            if (TimeStart < DateTime.Now  && DateTime.Now < TimeFinish && this.persentComplete < 100)
             {
                 this.CurrentStatus = Status.Executing;
             }
-            if (this.CurrentStatus == Status.Executing && DateTime.Now < TimeFinish && this.PersentComplete < 100)
+            if (TimeFinish < DateTime.Now && this.PersentComplete < 100)
             {
                 this.CurrentStatus = Status.Overdue;
             }
-            if ((this.CurrentStatus == Status.Executing || this.CurrentStatus == Status.Overdue) && this.PersentComplete >= 100)
+            if (this.PersentComplete >= 100)
             {
                 this.CurrentStatus = Status.Completed;
             }

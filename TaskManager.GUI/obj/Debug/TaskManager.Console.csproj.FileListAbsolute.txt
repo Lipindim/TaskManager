@@ -1,8 +1,6 @@
 D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\TaskManager.Console.exe.config
 D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\TaskManager.Console.exe
 D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\TaskManager.Console.pdb
-D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\Microsoft.Windows.Shell.dll
-D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\RibbonControlsLibrary.dll
 D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\TaskManager.Domain.dll
 D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\TaskManager.Services.exe
 D:\Repository\TaskManager\TaskManager.GUI\bin\Debug\EntityFramework.dll

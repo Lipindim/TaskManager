@@ -81,6 +81,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\ExecutorConverter.cs" />
     <Compile Include="Converter\InvertBoolConverter.cs" />
     <Compile Include="MyApp.cs" />
     <Compile Include="Windows\CommentWindow.xaml.cs">
